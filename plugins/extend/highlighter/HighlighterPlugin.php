@@ -44,7 +44,7 @@ class HighlighterPlugin extends ExtendPlugin
     {
         global $_index, $_page;
 
-        if ($_index['is_page'] && $this->getConfig()->offsetGet('in_' . $this->types[$_page['type']])
+        if ($_index['is_page'] && isset($this->types[$_page['type']]) && $this->getConfig()->offsetGet('in_' . $this->types[$_page['type']])
             || ($_index['is_plugin'] && $this->getConfig()->offsetGet('in_plugin'))
             || ($_index['is_module'] && $this->getConfig()->offsetGet('in_module'))
         ) {
