@@ -1,0 +1,11 @@
+{
+    "name": "Syntax Highlighter",
+    "description": "Syntax highlighting for the Web (https://highlightjs.org/)",
+    "version": "8.0",
+    "api": "^8.0",
+    "url": "http://jdanek.eu/",
+    "class": "HighlighterPlugin",
+    "events.web": [
+        ["tpl.head", "$this::onHead"]
+    ]
+}
