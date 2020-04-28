@@ -1,8 +1,143 @@
+## Version 10.0.1
+
+Parser Engine Changes:
+
+- (bug) Fix sublanguage with no relevance score (#2506) [Josh Goebel][]
+
+[Josh Goebel]: https://github.com/yyyc514
+
+
+## Version 10.0.0
+
+New languages:
+
+- add(php-template) Explicit language to detect PHP templates (vs xml) [Josh Goebel][]
+- enh(python) Added `python-repl` for Python REPL sessions
+- add(never) Added 3rd party Never language support
+
+New themes:
+
+- *Srcery* by [Chen Bin][]
+
+Parser Engine Changes:
+
+- (bug) Fix `beginKeywords` to ignore . matches (#2434) [Josh Goebel][]
+- (enh) add `before:highlight` plugin API callback (#2395) [Josh Goebel][]
+- (enh) add `after:highlight` plugin API callback (#2395) [Josh Goebel][]
+- (enh) split out parse tree generation and HTML rendering concerns (#2404) [Josh Goebel][]
+- (enh) every language can have a `name` attribute now (#2400) [Josh Goebel][]
+- (enh) improve regular expression detect (less false-positives) (#2380) [Josh Goebel][]
+- (enh) make `noHighlightRe` and `languagePrefixRe` configurable (#2374) [Josh Goebel][]
+
+Language Improvements:
+
+- enh(python) Exclude parens from functions params (#2490) [Álvaro Mondéjar][]
+- enh(swift) Add `compactMap` to keywords as built_in (#2478) [Omid Golparvar][]
+- enh(nim) adds `func` keyword (#2468) [Adnan Yaqoob][]
+- enh(xml) deprecate ActionScript inside script tags (#2444) [Josh Goebel][]
+- fix(javascript) prevent get/set variables conflicting with keywords (#2440) [Josh Goebel][]
+- bug(clojure) Now highlights `defn-` properly (#2438) [Josh Goebel][]
+- enh(bash) default value is another variable (#2439) [Josh Goebel][]
+- enh(bash) string nested within string (#2439) [Josh Goebel][]
+- enh(bash) Add arithmetic expression support (#2439) [Josh Goebel][]
+- enh(clojure) Add support for global definitions name (#2347) [Alexandre Grison][]
+- enh(fortran) Support Fortran 77 style comments (#2416) [Josh Goebel][]
+- (csharp) add support for `@identifier` style identifiers (#2414) [Josh Goebel][]
+- fix(elixir) Support function names with a slash (#2406) [Josh Goebel][]
+- fix(javascript) comma is allowed in a "value container" (#2403) [Josh Goebel][]
+- enh(apache) add `deny` and `allow` keywords [Josh Goebel][]
+- enh(apache) highlight numeric attributes values [Josh Goebel][]
+- enh(apache) highlight IP addresses, ports, and strings in sections [Josh Goebel][]
+- enh(php) added more keywords and include `<?=` syntax to meta [Taufik Nurrohman][]
+- fix(protobuf) Fix `rpc` when followed by a block (#) [Josh Goebel][]
+- enh(zephir) almost complete rework of the zephir grammar (#2387) [Josh Goebel][]
+- (markdown) much improved code block support (#2382) [Josh Goebel][]
+- (markdown) improve bold/italic nesting (#2382) [Josh Goebel][]
+- enh(csharp) Support `where` keyword as class constraint (#2378) [Josh Goebel][]
+- enh(csharp) Allow reference path in class inheritance lists (#2378) [Josh Goebel][]
+- enh(csharp) Add generic modifiers (in, out) (#2378) [Josh Goebel][]
+- (fortran) enh(fortran) support intrinsic data types (#2379) [Josh Goebel][]
+- enh(java) annotations can include numbers (#2377) [Josh Goebel][]
+- enh(java) annotations can take params (#2377) [Josh Goebel][]
+- enh(java) allow annotations inside function call params (#2377) [Josh Goebel][]
+- enh(parser) pre/post-highlightBlock callbacks via plugin (#2285) [Josh Goebel][]
+- (fortran) Add Fortran 2018 keywords and coarray intrinsics (#2361) [Sam Miller][]
+- (delphi) highlight hexadecimal, octal, and binary numbers (#2370) [Robert Riebisch]()
+- enh(plaintext) added `text` and `txt` as alias (#2360) [Taufik Nurrohman][]
+- enh(powershell) added PowerShell v5.1/v7 default aliases as "built_in"s (#2423) [Sean Williams][]
+- enh(yaml) added support for timestamps (#2475) [Peter Plantinga][]
+
+Developer Tools:
+
+- added Dockerfile for optionally developing with a container
+
+[Omid Golparvar]: https://github.com/omidgolparvar
+[Alexandre Grison]: https://github.com/agrison
+[Josh Goebel]: https://github.com/yyyc514
+[Chen Bin]: https://github.com/redguardtoo
+[Sam Miller]: https://github.com/smillerc
+[Robert Riebisch]: https://github.com/bttrx
+[Taufik Nurrohman]: https://github.com/taufik-nurrohman
+[Josh Goebel]: https://github.com/yyyc514
+[Sean Williams]: https://github.com/hmmwhatsthisdo
+[Adnan Yaqoob]: https://github.com/adnanyaqoobvirk
+[Álvaro Mondéjar]: https://github.com/mondeja
+
+
+## Version 9.18.1
+
+Grammar Improvements:
+
+- bug(coffeescript) fix freezing bug due to badly behaved regex (#2376) [Josh Goebel][]
+
+[Josh Goebel]: https://github.com/yyyc514
+
+
+## Version 9.18.0
+
+New languages:
+
+- none.
+
+New themes:
+
+- none.
+
+Core Changes:
+
+- none.
+
+Language Improvements:
+
+- (javascript) fix JSX self-closing tag issues (#2322) [Josh Goebel][]
+- (fortran) added `block` and `endblock` keywords (#2343) [Philipp Engel][]
+- (javascript) support jsx fragments (#2333) [Josh Goebel][]
+- (ini) support TOML arrays, clean up grammar (#2335) [Josh Goebel][]
+- (vbnet) add nameof operator to the keywords (#2329) [Youssef Victor][]
+- (stan) updated with improved coverage of language keywords and patterns. (#1829) [Jeffrey Arnold][]
+- enh(cpp) Detect namespaced function types (`A::typeName func(...)`) (#2332) [Josh Goebel][]
+- enh(cpp) Detect namespaced functions also (`A::functionName`) (#2332) [Josh Goebel][]
+- enh(cpp) Properly detect decltype(auto) (#2332) [Josh Goebel][]
+- enh(cpp) recognize primitive types (`int8_t`, etc.) as function types (#2332) [Josh Goebel][]
+
+Developer Tools:
+
+- feat(developer): add button to show parsed structure (#2345) [Nils Knappmeier][]
+
+[Jeffrey Arnold]: https://github.com/jrnold
+[Josh Goebel]: https://github.com/yyyc514
+[Philipp Engel]: https://github.com/interkosmos
+[Youssef Victor]: https://github.com/Youssef1313
+[Nils Knappmeier]: https://github.com/nknapp
+
+
 ## Version 9.17.1
 
 Fixes:
 
 - fix(parser): resolve IE 11 issue with Object.freeze() (#2319) [Josh Goebel][]
+
+[Josh Goebel]: https://github.com/yyyc514
 
 
 ## Version 9.17.0
