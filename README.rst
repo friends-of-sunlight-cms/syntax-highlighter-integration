@@ -1,5 +1,5 @@
-Syntax Highlighter
-##################
+Syntax Highlighter Plugin
+#########################
 
 Implemantation syntax highlighting for the Web (https://highlightjs.org/)
 
