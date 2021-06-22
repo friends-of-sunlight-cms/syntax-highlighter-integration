@@ -10,6 +10,6 @@
         "highlighter": "Resources/languages/"
     },
     "events.web": [
-        ["tpl.head", "$this::onHead"]
+		{"event": "tpl.head", "method": "onHead"}
     ]
 }
