@@ -1,5 +1,5 @@
 <?php
-return array(
+return [
     'style' => 'Appearance',
     'in_section' => 'Active in sections',
     'in_category' => 'Active in categories',
@@ -8,4 +8,4 @@ return array(
     'in_forum' => 'Active in Active in forums',
     'in_plugin' => 'Active in plugins',
     'in_module' => 'Active in modules',
-);
+];

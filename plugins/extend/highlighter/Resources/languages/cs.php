@@ -1,5 +1,5 @@
 <?php
-return array(
+return [
     'style' => 'Vzhled',
     'in_section' => 'Aktivní v sekcích',
     'in_category' => 'Aktivní v kategoriích',
@@ -8,4 +8,4 @@ return array(
     'in_forum' => 'Aktivní ve fórech',
     'in_plugin' => 'Aktivní v pluginech',
     'in_module' => 'Aktivní v modulech',
-);
+];
