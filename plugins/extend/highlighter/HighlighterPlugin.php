@@ -3,11 +3,14 @@
 namespace SunlightExtend\Highlighter;
 
 use Sunlight\Action\ActionResult;
+use Sunlight\Core;
 use Sunlight\Database\Database as DB;
+use Sunlight\Page\Page;
 use Sunlight\Plugin\Action\ConfigAction;
 use Sunlight\Plugin\Action\PluginAction;
 use Sunlight\Plugin\ExtendPlugin;
 use Sunlight\Util\Form;
+use Sunlight\WebState;
 
 /**
  * Highlighter plugin
@@ -19,12 +22,12 @@ class HighlighterPlugin extends ExtendPlugin
 
     /** @var array */
     private $types = [
-        _page_section => 'section',
-        _page_category => 'category',
-        _page_book => 'book',
-        _page_group => 'group',
-        _page_forum => 'forum',
-        _page_plugin => 'plugin',
+        Page::SECTION => 'section',
+        Page::CATEGORY => 'category',
+        Page::BOOK => 'book',
+        Page::GROUP => 'group',
+        Page::FORUM => 'forum',
+        Page::PLUGIN => 'plugin',
     ];
 
     protected function getConfigDefaults(): array
@@ -50,12 +53,12 @@ class HighlighterPlugin extends ExtendPlugin
         global $_index, $_page;
 
         if (
-            $_index['type'] === _index_page
-            && isset($this->types[$_page['type']])
-            && $this->getConfig()->offsetGet('in_' . $this->types[$_page['type']]
+            $_index->type === WebState::PAGE
+            && isset($this->types[$_index->type])
+            && $this->getConfig()->offsetGet('in_' . $this->types[$_index->type]
             )
-            || ($_index['type'] === _index_plugin && $this->getConfig()->offsetGet('in_plugin'))
-            || ($_index['type'] === _index_module && $this->getConfig()->offsetGet('in_module'))
+            || ($_index->type === WebState::PLUGIN && $this->getConfig()->offsetGet('in_plugin'))
+            || ($_index->type === WebState::MODULE && $this->getConfig()->offsetGet('in_module'))
         ) {
             $args['css'][] = $this->getWebPath() . '/Resources/styles/' . $this->getConfig()->offsetGet('style') . '.css';
             $args['js'][] = $this->getWebPath() . '/Resources/highlight.pack.js';
@@ -65,7 +68,7 @@ class HighlighterPlugin extends ExtendPlugin
 
     public function getAction(string $name): PluginAction
     {
-        if ($name == 'config') {
+        if ($name === 'config') {
             return new CustomConfig($this);
         }
         return parent::getAction($name);
@@ -78,8 +81,8 @@ class CustomConfig extends ConfigAction
     protected function execute(): ActionResult
     {
         // automatic increment cache (enforce reload css)
-        if (!_debug && (isset($_POST['save']) || isset($_POST['reset']))) {
-            DB::update(_setting_table, "var=" . DB::val('cacheid'), ['val' => DB::raw('val+1')]);
+        if (!Core::$debug && (isset($_POST['save']) || isset($_POST['reset']))) {
+            DB::update('setting', "var=" . DB::val('cacheid'), ['val' => DB::raw('val+1')]);
         }
         return parent::execute();
     }
