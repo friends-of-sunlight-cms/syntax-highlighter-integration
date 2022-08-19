@@ -8,7 +8,6 @@ Implemantation syntax highlighting for the Web (https://highlightjs.org/)
 Requirements
 ************
 
-- PHP 5.3+
 - SunLight CMS 8
 
 Installation
