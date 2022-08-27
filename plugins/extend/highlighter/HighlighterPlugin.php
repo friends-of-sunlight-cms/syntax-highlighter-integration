@@ -60,8 +60,8 @@ class HighlighterPlugin extends ExtendPlugin
             || ($_index->type === WebState::PLUGIN && $this->getConfig()->offsetGet('in_plugin'))
             || ($_index->type === WebState::MODULE && $this->getConfig()->offsetGet('in_module'))
         ) {
-            $args['css'][] = $this->getWebPath() . '/Resources/styles/' . $this->getConfig()->offsetGet('style') . '.css';
-            $args['js'][] = $this->getWebPath() . '/Resources/highlight.pack.js';
+            $args['css'][] = $this->getWebPath() . '/resources/styles/' . $this->getConfig()->offsetGet('style') . '.css';
+            $args['js'][] = $this->getWebPath() . '/resources/highlight.pack.js';
             $args['js_after'] .= "\n<script>$(document).ready(function(){ $('span.pre').each(function(i, block) {hljs.highlightBlock(block);});});</script>";
         }
     }
@@ -91,7 +91,7 @@ class CustomConfig extends ConfigAction
     {
         // load all available styles
         $styles = [];
-        foreach (glob(__DIR__ . DIRECTORY_SEPARATOR . "Resources/styles/*.css") as $file) {
+        foreach (glob(__DIR__ . DIRECTORY_SEPARATOR . "resources/styles/*.css") as $file) {
             $name = pathinfo($file, PATHINFO_FILENAME);
             $styles[$name] = $name;
         }

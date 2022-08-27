@@ -9,7 +9,7 @@
     "url": "https://github.com/friends-of-sunlight-cms/",
     "class": "HighlighterPlugin",
     "langs": {
-        "highlighter": "Resources/languages/"
+        "highlighter": "resources/languages/"
     },
     "events.web": [
 		{"event": "tpl.head", "method": "onHead"}
