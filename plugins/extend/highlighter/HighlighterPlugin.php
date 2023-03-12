@@ -12,11 +12,6 @@ use Sunlight\Plugin\ExtendPlugin;
 use Sunlight\Util\Form;
 use Sunlight\WebState;
 
-/**
- * Highlighter plugin
- *
- * @author Jirka Daněk <jdanek.eu>
- */
 class HighlighterPlugin extends ExtendPlugin
 {
 
@@ -30,24 +25,8 @@ class HighlighterPlugin extends ExtendPlugin
         Page::PLUGIN => 'plugin',
     ];
 
-    protected function getConfigDefaults(): array
-    {
-        return [
-            // stranky
-            'style' => 'default',
-            'in_section' => false,
-            'in_category' => false,
-            'in_book' => false,
-            'in_group' => false,
-            'in_forum' => true,
-            'in_plugin' => false,
-            'in_module' => false,
-        ];
-    }
 
-    /**
-     * @param array $args
-     */
+
     public function onHead(array $args): void
     {
         global $_index, $_page;
@@ -66,7 +45,28 @@ class HighlighterPlugin extends ExtendPlugin
         }
     }
 
-    public function getAction(string $name): PluginAction
+    /**
+     * ============================================================================
+     *  EXTEND CONFIGURATION
+     * ============================================================================
+     */
+
+    protected function getConfigDefaults(): array
+    {
+        return [
+            // stranky
+            'style' => 'default',
+            'in_section' => false,
+            'in_category' => false,
+            'in_book' => false,
+            'in_group' => false,
+            'in_forum' => true,
+            'in_plugin' => false,
+            'in_module' => false,
+        ];
+    }
+
+    public function getAction(string $name): ?PluginAction
     {
         if ($name === 'config') {
             return new CustomConfig($this);
