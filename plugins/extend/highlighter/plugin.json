@@ -2,7 +2,7 @@
     "$schema": "../../../system/schema/extend.json",
     "name": "Syntax Highlighter",
     "description": "Syntax highlighting for the Web (https://highlightjs.org/)",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "environment": {
         "system": "^8.0"
     },
@@ -10,10 +10,23 @@
         {"name": "Friends of Sunlight CMS", "url": "https://github.com/friends-of-sunlight-cms/"}
     ],
     "class": "HighlighterPlugin",
+    "config_defaults": {
+        "style": "default",
+        "in_section": false,
+        "in_category": false,
+        "in_book": false,
+        "in_group": false,
+        "in_forum": true,
+        "in_plugin": false,
+        "in_module": false
+    },
+    "actions": {
+        "config": "ConfigAction"
+    },
     "langs": {
         "highlighter": "lang"
     },
     "events.web": [
-		{"event": "tpl.head", "method": "onHead"}
+        {"event": "tpl.head", "method": "onHead"}
     ]
 }
