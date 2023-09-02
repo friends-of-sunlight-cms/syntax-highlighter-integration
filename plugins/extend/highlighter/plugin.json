@@ -17,7 +17,7 @@
         "in_group": false,
         "in_forum": true,
         "in_plugin": false,
-        "in_module": true
+        "in_module": false
     },
     "actions": {
         "config": "ConfigAction"
