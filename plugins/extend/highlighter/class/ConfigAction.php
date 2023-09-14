@@ -24,58 +24,59 @@ class ConfigAction extends BaseConfigAction
     {
         // load all available styles
         $styles = [];
-        foreach (glob(__DIR__ . DIRECTORY_SEPARATOR . "public/styles/*.css") as $file) {
+        foreach (glob(__DIR__ . DIRECTORY_SEPARATOR . "../public/styles/*.css") as $file) {
             $name = pathinfo($file, PATHINFO_FILENAME);
             $styles[$name] = $name;
         }
+        dump($styles);
 
-        $cfg = $this->plugin->getConfig();
+        $config = $this->plugin->getConfig();
 
         return [
             'style' => [
                 'label' => _lang('highlighter.style'),
-                'input' => $this->createSelect('style', $styles, $cfg->offsetGet('style')),
+                'input' => $this->createSelect('style', $styles, $config['style']),
                 'type' => 'text'
             ],
             'in_section' => [
                 'label' => _lang('highlighter.in_section'),
-                'input' => '<input type="checkbox" name="config[in_section]" value="1"' . Form::activateCheckbox($cfg->offsetGet('in_section')) . '>',
+                'input' => '<input type="checkbox" name="config[in_section]" value="1"' . Form::activateCheckbox($config['in_section']) . '>',
                 'type' => 'checkbox'
             ],
             'in_category' => [
                 'label' => _lang('highlighter.in_category'),
-                'input' => '<input type="checkbox" name="config[in_category]" value="1"' . Form::activateCheckbox($cfg->offsetGet('in_category')) . '>',
+                'input' => '<input type="checkbox" name="config[in_category]" value="1"' . Form::activateCheckbox($config['in_category']) . '>',
                 'type' => 'checkbox'
             ],
             'in_book' => [
                 'label' => _lang('highlighter.in_book'),
-                'input' => '<input type="checkbox" name="config[in_book]" value="1"' . Form::activateCheckbox($cfg->offsetGet('in_book')) . '>',
+                'input' => '<input type="checkbox" name="config[in_book]" value="1"' . Form::activateCheckbox($config['in_book']) . '>',
                 'type' => 'checkbox'
             ],
             'in_group' => [
                 'label' => _lang('highlighter.in_group'),
-                'input' => '<input type="checkbox" name="config[in_group]" value="1"' . Form::activateCheckbox($cfg->offsetGet('in_group')) . '>',
+                'input' => '<input type="checkbox" name="config[in_group]" value="1"' . Form::activateCheckbox($config['in_group']) . '>',
                 'type' => 'checkbox'
             ],
             'in_forum' => [
                 'label' => _lang('highlighter.in_forum'),
-                'input' => '<input type="checkbox" name="config[in_forum]" value="1"' . Form::activateCheckbox($cfg->offsetGet('in_forum')) . '>',
+                'input' => '<input type="checkbox" name="config[in_forum]" value="1"' . Form::activateCheckbox($config['in_forum']) . '>',
                 'type' => 'checkbox'
             ],
             'in_plugin' => [
                 'label' => _lang('highlighter.in_plugin'),
-                'input' => '<input type="checkbox" name="config[in_plugin]" value="1"' . Form::activateCheckbox($cfg->offsetGet('in_plugin')) . '>',
+                'input' => '<input type="checkbox" name="config[in_plugin]" value="1"' . Form::activateCheckbox($config['in_plugin']) . '>',
                 'type' => 'checkbox'
             ],
             'in_module' => [
                 'label' => _lang('highlighter.in_module'),
-                'input' => '<input type="checkbox" name="config[in_module]" value="1"' . Form::activateCheckbox($cfg->offsetGet('in_module')) . '>',
+                'input' => '<input type="checkbox" name="config[in_module]" value="1"' . Form::activateCheckbox($config['in_module']) . '>',
                 'type' => 'checkbox'
             ],
         ];
     }
 
-    private function createSelect($name, $options, $default): string
+    private function createSelect(string $name, array $options, $default): string
     {
         $result = "<select name='config[" . $name . "]'>";
         foreach ($options as $k => $v) {
