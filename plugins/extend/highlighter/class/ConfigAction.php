@@ -28,7 +28,6 @@ class ConfigAction extends BaseConfigAction
             $name = pathinfo($file, PATHINFO_FILENAME);
             $styles[$name] = $name;
         }
-        dump($styles);
 
         $config = $this->plugin->getConfig();
 
